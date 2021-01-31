@@ -18,11 +18,17 @@
           </a>
           <!-- ¡Pending implementation! Should work toggling between sign_in and sign_out -->
           <ul class="dropdown-menu">
-            <li><%=link_to 'Create PicStory', new_story_path %></li>
-            <li><%=link_to 'My PicStories', stories_path %></li>
-            <li><%=link_to 'My Profile', user_path(session.id) %></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">'Sign Out'</a></li>
+            <% if current_user %>
+              <li><%= "Hola:#{current_user.name}" %></li>
+              <li><%=link_to 'Create PicStory', new_story_path %></li>
+              <li><%=link_to 'My PicStories', stories_path %></li>
+              <li><%=link_to 'My Profile', user_path(session.id) %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to 'Log out' , session_path(session.id), method: :delete, data: { confirm: 'Are you sure?' }  %></li>
+            <% else%>
+              <li><%=  link_to 'Registrarse' , new_user_path %>
+              <li><%=  link_to 'Iniciar Sesion' , new_session_path(session.id) %>
+            <%  end %>
           </ul>
         </li>
       </ul>
