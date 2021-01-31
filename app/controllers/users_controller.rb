@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @stories = @users.stories
   end
   private
 

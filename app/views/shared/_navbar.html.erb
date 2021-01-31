@@ -21,7 +21,7 @@
             <% if current_user %>
               <li><%= "Hola:#{current_user.name}" %></li>
               <li><%=link_to 'Create PicStory', new_story_path %></li>
-              <li><%=link_to 'My PicStories', stories_path %></li>
+              <li><%=link_to 'My PicStories', my_stories_path %></li>
               <li><%=link_to 'My Profile', user_path(session.id) %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'Log out' , session_path(session.id), method: :delete, data: { confirm: 'Are you sure?' }  %></li>
